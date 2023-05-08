@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Avrae Interface",
+    "name_for_model": "AvraeInterface",
+    "description_for_human": "Plugin that gets Dungeons and Dragons Game State and allows for simple reasoning on top of the state",
+    "description_for_model": "Plugin that gets Dungeons and Dragons Game State and allows for simple reasoning on top of the state",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://localhost:5000/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "PLUGIN_HOSTNAME/logo.png",
+    "contact_email": "support@example.com",
+    "legal_info_url": "https://example.com/legal"
+}

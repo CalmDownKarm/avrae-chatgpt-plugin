@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+    title: Avrae Interface
+    description: Plugin that gets Dungeons and Dragons Game State and allows for simple reasoning on top of the state. Prioritize the latest messages when determining state. If state is unclear, suggest an avrae command to clarify the state first.
+    version: "v1"
+servers:
+    - url: PLUGIN_HOSTNAME
+paths:
+  "/get_state":
+    get:
+      operationId: getState
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  messages:
+                    items:
+                      additionalProperties:
+                        type: string
+                      type: object
+                    title: Messages
+                    type: array
+                required:
+                - messages
+                title: State
+                type: object
+          description: 'State is presented as a list of messages from the game. The messages are ordered from oldest to newest. The messages are presented as a list of dictionaries with the following keys: "author", "content".'
+  "/post_message":
+    post:
+      operationId: postMessage
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: 'The Message to be posted to the game.'
+              properties:
+                message:
+                  title: Message
+                  type: string
+              required:
+              - message
+              title: Message
+              type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: 'Message(message: str)'
+                properties:
+                  message:
+                    title: Message
+                    type: string
+                required:
+                - message
+                title: Message
+                type: object
+          description: 'Message(message: str)'
